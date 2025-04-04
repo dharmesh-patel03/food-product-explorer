@@ -1,12 +1,30 @@
-# React + Vite
+-- initial setup
+    setting up react project and tailwind css
+    A theme switcher is implemented using useState and stored in localStorage so users can switch between light and dark themes.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+-- Fetching Products
+    When the page loads or the category/search query changes, it fetches food products from the OpenFoodFacts API using
+    fetch(`https://world.openfoodfacts.org/search.json?page_size=20&category=${category}`);
 
-Currently, two official plugins are available:
+-- barcode search
+    using barcode
+    fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+--  Sorting & Filtering
+    Users can:
+    Sort by name (A-Z or Z-A), nutrition grade, and calories.
+    Filter by food category (e.g., Snacks, Beverages, Cereals).
+    Sorting is applied after the data is fetched using a utility function sortProducts.
 
-## Expanding the ESLint configuration
+-- Pagination
+    Initially 20 products are shown.
+    On clicking the "Load More" button, the pageNumber increases, and more products are fetched (in batches of 20).
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-- components
+
+    SearchBar – Handles all input fields and the barcode search button.
+    ProductCard – Displays product image, name, score, and category.
+    SkeletonLoader – Shows loading placeholders while data is fetching.
+
+-- Error Handling
+    If an API call fails or the barcode is not found, a clean error message is shown to the user.
