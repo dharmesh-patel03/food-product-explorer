@@ -28,3 +28,5 @@
 
 -- Error Handling
     If an API call fails or the barcode is not found, a clean error message is shown to the user.
+
+    [![Netlify Status](https://api.netlify.com/api/v1/badges/843e0af9-9bf0-4af6-826b-392a617e84d7/deploy-status?branch=main)](https://app.netlify.com/sites/food-product-explorer/deploys)
