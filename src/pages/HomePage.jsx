@@ -57,6 +57,21 @@ function HomePage() {
     }
   }, [sortOption]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 &&
+        !loading
+      ) {
+        setPageNumber((prev) => prev + 20); // Load next 20
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [loading]);
+
+
 
   const handleBarcodeSearch = async () => {
     if (!barcode) return;
@@ -142,11 +157,11 @@ function HomePage() {
       </div>}
 
       <div>
-        <button className="btn   mt-4 block m-auto rounded-sm px-3  p-2 transition-all duration-300  py-2 font-semibold  duration 
+        {/* <button className="btn   mt-4 block m-auto rounded-sm px-3  p-2 transition-all duration-300  py-2 font-semibold  duration 
              bg-white/20 backdrop-blur-md border border-white/30 
              dark:bg-gray-800/30 dark:border-gray-700/50 
              text-black dark:text-white shadow-lg hover:shadow-xl 
-             hover:scale-75 active:scale-95  cursor-pointer" onClick={handlePageNumber}>Load More</button>
+             hover:scale-75 active:scale-95  cursor-pointer" onClick={handlePageNumber}>Load More</button> */}
       </div>
     </div>
   );
